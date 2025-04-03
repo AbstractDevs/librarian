@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { parseScript } from "@/util/parse-script";
+import { parseScript } from "@/utils/parse-script";
 import { getCollection } from "astro:content";
 
 const allScripts = (await getCollection("scripts")).map((script) =>
@@ -9,7 +9,7 @@ const allScripts = (await getCollection("scripts")).map((script) =>
 ---
 
 <Layout>
-  <h1>Scripts</h1>
+  <h1 class="text-3xl font-bold md:text-lg">Scripts</h1>
 
   <ul>
     {
