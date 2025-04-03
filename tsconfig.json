@@ -7,7 +7,14 @@
     "paths": {
       "@/layouts/*": ["src/layouts/*"],
       "@/components/*": ["src/components/*"],
-      "@/pages/*": ["src/pages/*"]
-    }
+      "@/pages/*": ["src/pages/*"],
+      "@/util/*": ["src/util/*"],
+      "@/types/*": ["src/types/*"]
+    },
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ]
   }
 }
