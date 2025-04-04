@@ -15,4 +15,12 @@ const scripts = defineCollection({
     .rest(z.string()),
 });
 
-export const collections = { scripts };
+const scriptChangelogs = defineCollection({
+  loader: glob({ pattern: "**/CHANGELOG.md", base: "./src/data/scripts" }),
+});
+
+const scriptReadmes = defineCollection({
+  loader: glob({ pattern: "**/README.md", base: "./src/data/scripts" }),
+});
+
+export const collections = { scripts, scriptChangelogs, scriptReadmes };
