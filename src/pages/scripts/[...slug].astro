@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const scripts = await getCollection("scripts");
+
+  return scripts.map((script) => ({
+    params: { slug: script.id },
+    props: script,
+  }));
+}
+
+const script = Astro.props;
+---
+
+<Layout>
+  <h1>Script: {script.id}</h1>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const scripts = await getCollection("scripts");
+---
+
+<Layout>
+  <div class="container mx-auto">
+    <h1>Scripts</h1>
+    <ul>
+      {
+        scripts.map((script) => (
+          <a href={`/scripts/${script.id}`}>
+            <li>{script.id}</li>
+          </a>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
