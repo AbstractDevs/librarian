@@ -1,28 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { parseScript } from "@/utils/parse-script";
-import { getCollection } from "astro:content";
-
-const allScripts = (await getCollection("scripts")).map((script) =>
-  parseScript(script.data),
-);
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold md:text-lg">Scripts</h1>
-
-  <ul>
-    {
-      allScripts.map((script) => (
-        <div>
-          <div>{script.meta.name}</div>
-          <ul>
-            {script.characters.map((character) => (
-              <li>{character}</li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </ul>
+  <div class="flex h-screen">
+    <div class="m-auto">
+      <h1 class="text-5xl font-bold">Under Construction</h1>
+    </div>
+  </div>
 </Layout>
