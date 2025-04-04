@@ -6,6 +6,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://abstractdevs.github.io",
+  base: "librarian",
   vite: {
     plugins: [tailwindcss()],
   },
