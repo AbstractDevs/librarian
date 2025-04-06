@@ -22,10 +22,17 @@ const { containerClass } = Astro.props;
   </head>
   <body class="overflow-hidden">
     <div class="flex h-[100dvh] flex-col overflow-auto">
-      <div class={cn("container mx-auto flex-1 mt-12 flex flex-col pb-12", containerClass)}>
+      <div
+        class={cn(
+          "container mx-auto flex-1 mt-12 flex flex-col pb-12 sm:px-0 px-4",
+          containerClass,
+        )}
+      >
         <div class="flex justify-center">
           <div class="space-y-1.5">
-            <Typography variant="h1" class="text-center">Librarian</Typography>
+            <a href="/">
+              <Typography variant="h1" class="text-center">Librarian</Typography>
+            </a>
             <Typography variant="caption" class="text-center">AbstractDevs</Typography>
           </div>
         </div>

@@ -8,6 +8,8 @@ import Layout from "@/layouts/Layout.astro";
 import { parseScriptData } from "@/utils/script";
 import { render, getEntry, getCollection } from "astro:content";
 import { ArrowLeftIcon } from "lucide-react";
+import { DownloadScriptJsonButton } from "@/components/react/download-script-json-button";
+import { CopyScriptJsonButton } from "@/components/react/copy-script-json-button";
 
 export async function getStaticPaths() {
   const scripts = await getCollection("scripts");
@@ -17,23 +19,35 @@ export async function getStaticPaths() {
       const [base] = script.id.split("/");
 
       // TODO: likely a much better way to do this?
+      const history = scripts
+        .filter(({ id }) => id.startsWith(base) && id.includes("/history/"))
+        .sort((a, b) => b.id.localeCompare(a.id))
+        .map((script) => parseScriptData(script));
+
+      // TODO: likely a much better way to do this?
       const [changelog, readme] = await Promise.all([
         getEntry("scriptChangelogs", `${base}/changelog`),
         getEntry("scriptReadmes", `${base}/readme`),
       ]);
 
+      if (!readme) {
+        throw new Error(`Script ${script.id} must contain a README`);
+      }
+
       return {
         params: { slug: script.id },
-        props: { script: parseScriptData(script), changelog, readme },
+        props: { script: parseScriptData(script), changelog, readme, history },
       };
     }),
   );
 }
 
-const { script, changelog, readme } = Astro.props;
+const { script, changelog, readme, history } = Astro.props;
 
 const ChangelogContent = changelog ? (await render(changelog)).Content : null;
-const ReadmeContent = readme ? (await render(readme)).Content : null;
+const { Content: ReadmeContent } = await render(readme);
+
+const isReadmeEmpty = !readme.rendered || readme.rendered?.html === "";
 ---
 
 <Layout containerClass="space-y-4">
@@ -43,21 +57,26 @@ const ReadmeContent = readme ? (await render(readme)).Content : null;
       Back to Scripts
     </ButtonLink>
   </div>
-  <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-8">
-      <div class="max-h-[700px] overflow-auto rounded-md border">
-        {
-          ReadmeContent ? (
-            <RenderedMarkdown>
-              <ReadmeContent />
-            </RenderedMarkdown>
-          ) : (
-            <Typography class="text-center">TODO: handle empty state for readme</Typography>
-          )
-        }
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-12">
+    <div class="order-2 col-auto md:order-none md:col-span-8">
+      <div class="max-h-[700px] space-y-8 overflow-auto rounded-md border p-6">
+        <Typography variant="h2">Overview</Typography>
+        <div class="mt-4">
+          {
+            !isReadmeEmpty ? (
+              <RenderedMarkdown>
+                <ReadmeContent />
+              </RenderedMarkdown>
+            ) : (
+              <Typography variant="caption-lg" class="text-center">
+                No overview for this script
+              </Typography>
+            )
+          }
+        </div>
       </div>
     </div>
-    <div class="col-span-4 rounded-md border">
+    <div class="order-1 col-auto rounded-md border md:order-none md:col-span-4">
       {
         readme?.data.frontImage && readme?.data.backImage && (
           <div>
@@ -87,23 +106,57 @@ const ReadmeContent = readme ? (await render(readme)).Content : null;
       </div>
     </div>
   </div>
-  <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-8">
-      <div class="max-h-[700px] overflow-auto rounded-md border">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-12">
+    <div class="col-auto md:order-none md:col-span-8">
+      <div class="max-h-[700px] space-y-8 overflow-auto rounded-md border p-6">
+        <Typography variant="h2">Changelog</Typography>
         {
           ChangelogContent ? (
-            <RenderedMarkdown>
-              <ChangelogContent />
-            </RenderedMarkdown>
+            <div class="mt-4">
+              <RenderedMarkdown>
+                <ChangelogContent />
+              </RenderedMarkdown>
+            </div>
           ) : (
-            <Typography class="text-center">TODO: handle empty state for changelog</Typography>
+            <Typography variant="caption-lg" class="text-center">
+              No changelog for this script
+            </Typography>
           )
         }
       </div>
     </div>
-    <div class="col-span-4 rounded-md border">
-      <div>
-        <Typography class="text-center">TODO: History</Typography>
+    <div class="order-1 col-auto space-y-8 rounded-md border p-6 md:col-span-4">
+      <Typography variant="h2">History</Typography>
+      <div class="flex flex-col gap-4">
+        {
+          history.length === 0 && (
+            <Typography variant="caption-lg" class="text-center">
+              No past versions of this script
+            </Typography>
+          )
+        }
+        {
+          history.map(({ id }) => (
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <Typography variant="body-lg">{id.substring(id.lastIndexOf("/") + 1)}</Typography>
+              </div>
+              <div class="flex items-center gap-2">
+                <CopyScriptJsonButton
+                  client:load
+                  jsonString={script.scriptJsonString}
+                  size="icon"
+                />
+                <DownloadScriptJsonButton
+                  client:load
+                  jsonString={script.scriptJsonString}
+                  scriptId={id}
+                  size="icon"
+                />
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
