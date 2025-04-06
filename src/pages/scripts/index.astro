@@ -2,7 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const scripts = await getCollection("scripts");
+const scripts = await getCollection(
+  "scripts",
+  ({ id }) => !id.includes("/history/"),
+);
 ---
 
 <Layout>
