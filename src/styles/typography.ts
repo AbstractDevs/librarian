@@ -15,9 +15,9 @@ export const typographyVariants = cva("", {
       label: "text-sm font-medium",
       "label-sm": "text-xs font-medium",
       "label-lg": "text-base font-medium",
-      caption: "text-sm text-muted-foreground",
-      "caption-sm": "text-xs text-muted-foreground",
-      "caption-lg": "text-base text-muted-foreground",
+      caption: "text-sm text-foreground/50",
+      "caption-sm": "text-xs text-foreground/50",
+      "caption-lg": "text-base text-foreground/50",
     },
   },
   defaultVariants: {
