@@ -1,4 +1,5 @@
 ---
+import Typography from "@/components/astro/typography.astro";
 import "@/styles/index.css";
 import { cn } from "@/utils/cn";
 
@@ -20,7 +21,13 @@ const { containerClass } = Astro.props;
   </head>
   <body class="overflow-hidden">
     <div class="flex h-[100dvh] flex-col overflow-auto">
-      <div class={cn("container mx-auto flex-1", containerClass)}>
+      <div class={cn("container mx-auto flex-1 mt-12 flex flex-col", containerClass)}>
+        <div class="flex justify-center">
+          <div class="space-y-1.5">
+            <Typography variant="h1" class="text-center">Librarian</Typography>
+            <Typography variant="caption" class="text-center">AbstractDevs</Typography>
+          </div>
+        </div>
         <slot />
       </div>
     </div>

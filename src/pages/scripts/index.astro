@@ -2,19 +2,12 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { ScriptTable } from "@/components/react/script-table";
-import Typography from "@/components/astro/typography.astro";
 
 const scripts = (await getCollection("scripts", ({ id }) => !id.includes("/history/"))).sort(
   (a, b) => a.data[0].name.localeCompare(b.data[0].name),
 );
 ---
 
-<Layout containerClass="mt-12 space-y-4">
-  <div class="flex justify-center">
-    <div class="space-y-1.5">
-      <Typography variant="h1" class="text-center">Librarian</Typography>
-      <Typography variant="caption" class="text-center">AbstractDevs</Typography>
-    </div>
-  </div>
+<Layout>
   <ScriptTable client:load scripts={scripts} />
 </Layout>
