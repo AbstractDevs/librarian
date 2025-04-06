@@ -3,6 +3,7 @@ import RenderedMarkdown from "@/components/astro/rendered-markdown.astro";
 import Typography from "@/components/astro/typography.astro";
 import { ButtonLink } from "@/components/ui/button-link";
 import Layout from "@/layouts/Layout.astro";
+import { parseScriptData } from "@/utils/script";
 import { render, getEntry, getCollection } from "astro:content";
 import { ArrowLeftIcon } from "lucide-react";
 
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
       return {
         params: { slug: script.id },
-        props: { script, changelog, readme },
+        props: { script: parseScriptData(script), changelog, readme },
       };
     }),
   );

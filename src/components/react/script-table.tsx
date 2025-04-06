@@ -6,9 +6,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { CollectionEntry } from "astro:content";
+import type { Script } from "@/utils/script";
 
-export const ScriptTable = ({ scripts }: { scripts: CollectionEntry<"scripts">[] }) => {
+export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
   return (
     <Table>
       <TableHeader>
@@ -20,15 +20,18 @@ export const ScriptTable = ({ scripts }: { scripts: CollectionEntry<"scripts">[]
         </TableRow>
       </TableHeader>
       <TableBody>
-        {scripts.map(({ data, id }) => (
+        {scripts.map(({ id, author, name, characterBreakdown }) => (
           <TableRow
             key={id}
             onClick={() => (window.location.href = `/scripts/${id}`)}
             className="cursor-pointer"
           >
-            <TableCell>{data[0].name}</TableCell>
-            <TableCell>{data[0].author}</TableCell>
-            <TableCell>TODO</TableCell>
+            <TableCell>{name}</TableCell>
+            <TableCell>{author}</TableCell>
+            <TableCell>
+              {characterBreakdown.townsfolkCount} / {characterBreakdown.outsiderCount} /{" "}
+              {characterBreakdown.minionCount} / {characterBreakdown.demonCount}
+            </TableCell>
             <TableCell>TODO</TableCell>
           </TableRow>
         ))}

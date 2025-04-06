@@ -9,5 +9,3 @@ export const ScriptSchema = z
     }),
   ])
   .rest(z.string());
-
-export type Script = z.infer<typeof ScriptSchema>;

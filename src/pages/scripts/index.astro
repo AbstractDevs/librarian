@@ -2,10 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { ScriptTable } from "@/components/react/script-table";
+import { parseScriptData } from "@/utils/script";
 
-const scripts = (await getCollection("scripts", ({ id }) => !id.includes("/history/"))).sort(
-  (a, b) => a.data[0].name.localeCompare(b.data[0].name),
-);
+const scripts = (await getCollection("scripts", ({ id }) => !id.includes("/history/")))
+  .sort((a, b) => a.data[0].name.localeCompare(b.data[0].name))
+  .map((script) => parseScriptData(script));
 ---
 
 <Layout>
