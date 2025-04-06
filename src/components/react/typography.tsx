@@ -10,41 +10,41 @@ interface TypographyProps extends React.HTMLAttributes<HTMLElement>, TypographyV
   variant?: TypographyVariant;
 }
 
-export const Typography = ({ variant, className, ...rest }: TypographyProps) => {
+export const Typography = ({ variant, children, className, ...rest }: TypographyProps) => {
   return match(variant)
     .with("h1", () => (
       <h1 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h1>
     ))
     .with("h2", () => (
       <h2 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h2>
     ))
     .with("h3", () => (
       <h3 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h3>
     ))
     .with("h4", () => (
       <h4 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h4>
     ))
     .with("h5", () => (
       <h5 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h5>
     ))
     .with("h6", () => (
       <h6 {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </h6>
     ))
     .otherwise(() => (
       <p {...rest} className={cn(typographyVariants({ variant, className }))}>
-        <slot />
+        {children}
       </p>
     ));
 };
