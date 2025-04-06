@@ -194,7 +194,7 @@ const allBaseCharacters = [
 
 export const CharacterNameSchema = z.enum(allBaseCharacters);
 
-type CharacterName = z.infer<typeof CharacterNameSchema>;
+export type CharacterName = z.infer<typeof CharacterNameSchema>;
 
 export const characterRegistry = {
   acrobat: { type: "townsfolk", displayName: "Acrobat" },

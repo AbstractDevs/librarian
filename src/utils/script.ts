@@ -42,5 +42,6 @@ export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
     author: meta.author,
     characterBreakdown,
     scriptJsonString: JSON.stringify(script.data),
+    characters: characters.map((character) => CharacterNameSchema.parse(character)),
   };
 };

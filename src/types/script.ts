@@ -1,3 +1,5 @@
+import type { CharacterName } from "@/data/characters/registry";
+
 export type Script = {
   id: string;
   name: string;
@@ -9,4 +11,5 @@ export type Script = {
     demonCount: number;
   };
   scriptJsonString: string;
+  characters: CharacterName[];
 };
