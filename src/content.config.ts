@@ -21,6 +21,11 @@ const scriptChangelogs = defineCollection({
 
 const scriptReadmes = defineCollection({
   loader: glob({ pattern: "**/README.md", base: "./src/data/scripts" }),
+  schema: ({ image }) =>
+    z.object({
+      frontImage: image().optional(),
+      backImage: image().optional(),
+    }),
 });
 
 export const collections = { scripts, scriptChangelogs, scriptReadmes };

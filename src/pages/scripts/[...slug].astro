@@ -2,6 +2,8 @@
 import RenderedMarkdown from "@/components/astro/rendered-markdown.astro";
 import Typography from "@/components/astro/typography.astro";
 import { ButtonLink } from "@/components/ui/button-link";
+import { ScriptImageActionButtons } from "@/components/react/script-image-action-buttons";
+import { ScriptImageTabs } from "@/components/react/script-image-tabs";
 import Layout from "@/layouts/Layout.astro";
 import { parseScriptData } from "@/utils/script";
 import { render, getEntry, getCollection } from "astro:content";
@@ -56,7 +58,33 @@ const ReadmeContent = readme ? (await render(readme)).Content : null;
       </div>
     </div>
     <div class="col-span-4 rounded-md border">
-      <Typography class="text-center">TODO: Image and actions</Typography>
+      {
+        readme?.data.frontImage && readme?.data.backImage && (
+          <div>
+            <ScriptImageTabs
+              client:load
+              frontImage={{
+                src: readme.data.frontImage.src,
+                height: readme.data.frontImage.height,
+                width: readme.data.frontImage.width,
+              }}
+              backImage={{
+                src: readme.data.backImage.src,
+                height: readme.data.backImage.height,
+                width: readme.data.backImage.width,
+              }}
+            />
+          </div>
+        )
+      }
+      <div class="my-4 flex justify-center">
+        <ScriptImageActionButtons
+          client:load
+          script={script}
+          frontImageSrc={readme?.data.frontImage?.src}
+          backImageSrc={readme?.data.backImage?.src}
+        />
+      </div>
     </div>
   </div>
   <div class="grid grid-cols-12 gap-4">

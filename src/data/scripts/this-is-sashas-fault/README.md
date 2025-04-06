@@ -1,3 +1,8 @@
+---
+frontImage: ./this-is-sashas-fault-1.png
+backImage: ./this-is-sashas-fault-2.png
+---
+
 # This is Sasha's Fault
 
 This script was initially a "draft" script, where each player chose a role to be on the script. Since the initial draft, I have refined it to attempt to make it more balanced and playable

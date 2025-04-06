@@ -1,24 +1,26 @@
 import { Button, type ButtonProps } from "./button";
 
-interface JSONDownloadButtonProps extends ButtonProps {
-  jsonString: string;
+interface DownloadButtonProps extends ButtonProps {
+  content: string;
   fileName: string;
+  contentType?: string;
 }
 
-export const JSONDownloadButton = ({
-  jsonString,
+export const DownloadButton = ({
+  content,
   fileName,
   children,
+  contentType = "application/json",
   ...props
-}: JSONDownloadButtonProps) => {
+}: DownloadButtonProps) => {
   return (
     <Button
       {...props}
       onClick={(e) => {
         e.stopPropagation();
 
-        const blob = new Blob([jsonString], {
-          type: "application/json",
+        const blob = new Blob([content], {
+          type: contentType,
         });
 
         const url = URL.createObjectURL(blob);

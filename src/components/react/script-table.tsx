@@ -9,10 +9,9 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 import type { Script } from "@/utils/script";
-import { Button } from "../ui/button";
 import { ClipboardCopyIcon, DownloadIcon } from "lucide-react";
-import { toast } from "sonner";
-import { JSONDownloadButton } from "../ui/download-button";
+import { DownloadButton } from "../ui/download-button";
+import { CopyButton } from "../ui/copy-button";
 
 export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
   return (
@@ -42,28 +41,16 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button
+                    <CopyButton
+                      content={scriptJsonString}
+                      successMessage="JSON copied to clipboard"
+                      successDescription="You can paste it into botc.app to play"
                       size="icon"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigator.clipboard
-                          .writeText(scriptJsonString)
-                          .then(() => {
-                            toast.success("JSON copied to clipboard", {
-                              description: "You can paste it into botc.app to play",
-                            });
-                          })
-                          .catch(() => {
-                            toast.error("Something went wrong", {
-                              description: "Please try again or refresh the page",
-                            });
-                          });
-                      }}
                       variant="outline"
                     >
                       <ClipboardCopyIcon />
                       <span className="sr-only">Copy Script JSON</span>
-                    </Button>
+                    </CopyButton>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Copy JSON</p>
@@ -74,13 +61,14 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <JSONDownloadButton
-                      jsonString={scriptJsonString}
+                    <DownloadButton
+                      content={scriptJsonString}
                       fileName={`${id.replaceAll("/", "-")}.json`}
+                      size="icon"
                     >
                       <DownloadIcon />
                       <span className="sr-only">Download Script JSON</span>
-                    </JSONDownloadButton>
+                    </DownloadButton>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Download JSON</p>
