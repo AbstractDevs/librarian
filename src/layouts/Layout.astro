@@ -1,5 +1,6 @@
 ---
 import Typography from "@/components/astro/typography.astro";
+import { Toaster } from "@/components/ui/sonner";
 import "@/styles/index.css";
 import { cn } from "@/utils/cn";
 
@@ -31,5 +32,6 @@ const { containerClass } = Astro.props;
         <slot />
       </div>
     </div>
+    <Toaster client:load />
   </body>
 </html>

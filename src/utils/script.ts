@@ -12,6 +12,7 @@ export type Script = {
     minionCount: number;
     demonCount: number;
   };
+  scriptJsonString: string;
 };
 
 export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
@@ -52,5 +53,6 @@ export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
     name: meta.name,
     author: meta.author,
     characterBreakdown,
+    scriptJsonString: JSON.stringify(script.data),
   };
 };
