@@ -10,5 +10,7 @@ const scripts = (await getCollection("scripts", ({ id }) => !id.includes("/histo
 ---
 
 <Layout>
-  <ScriptTable client:load scripts={scripts} />
+  <div class="mt-8">
+    <ScriptTable client:load scripts={scripts} />
+  </div>
 </Layout>
