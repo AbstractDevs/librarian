@@ -23,7 +23,7 @@ export const CopyScriptJsonButton = ({
                 description: "You can paste it into botc.app to play",
               });
             }}
-            variant="outline"
+            variant="neutral"
             size={size}
           >
             <ClipboardCopyIcon />

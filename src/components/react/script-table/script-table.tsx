@@ -80,7 +80,6 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
                 onClick={() => {
                   window.location.href = `/scripts/${row.original.id}`;
                 }}
-                className="cursor-pointer"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

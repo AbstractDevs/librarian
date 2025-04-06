@@ -66,10 +66,10 @@ export const Filters = ({
           className="placeholder:pl-5"
         />
       </div>
-      <div className="flex w-full items-center gap-0.5 md:w-auto">
+      <div className="flex w-full items-center gap-1.5 md:w-auto">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline" role="combobox" className="flex-1 md:flex-none">
+            <Button variant="neutral" role="combobox" className="flex-1 md:flex-none">
               <UserIcon />
               {globalFilter.selectedCharacters.length > 0
                 ? `${globalFilter.selectedCharacters.length} Character${globalFilter.selectedCharacters.length > 1 ? "s" : ""}`
@@ -125,7 +125,7 @@ export const Filters = ({
         </Popover>
         <Button
           size="icon"
-          variant="ghost"
+          variant="default"
           onClick={() =>
             setGlobalFilter({
               ...globalFilter,
