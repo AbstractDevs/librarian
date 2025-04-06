@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import type { Script } from "@/utils/script";
+import type { Script } from "@/types/script";
 import { useState } from "react";
 import { Input } from "../../ui/input";
 import { SearchIcon } from "lucide-react";

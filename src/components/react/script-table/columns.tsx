@@ -1,5 +1,5 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import type { Script } from "@/utils/script";
+import type { Script } from "@/types/script";
 import type { ColumnDef } from "@tanstack/react-table";
 import { CopyScriptJsonButton } from "../copy-script-json-button";
 import { DownloadScriptJsonButton } from "../download-script-json-button";

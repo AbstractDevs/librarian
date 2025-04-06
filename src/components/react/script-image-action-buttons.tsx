@@ -1,4 +1,4 @@
-import type { Script } from "@/utils/script";
+import type { Script } from "@/types/script";
 import { CopyScriptJsonButton } from "./copy-script-json-button";
 import { DownloadScriptJsonButton } from "./download-script-json-button";
 

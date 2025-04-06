@@ -1,19 +1,7 @@
 import { CharacterNameSchema, characterRegistry } from "@/data/characters/registry";
+import type { Script } from "@/types/script";
 import type { CollectionEntry } from "astro:content";
 import { match } from "ts-pattern";
-
-export type Script = {
-  id: string;
-  name: string;
-  author: string;
-  characterBreakdown: {
-    townsfolkCount: number;
-    outsiderCount: number;
-    minionCount: number;
-    demonCount: number;
-  };
-  scriptJsonString: string;
-};
 
 export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
   const [meta, ...characters] = script.data;
