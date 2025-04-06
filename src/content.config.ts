@@ -28,4 +28,19 @@ const scriptReadmes = defineCollection({
     }),
 });
 
-export const collections = { scripts, scriptChangelogs, scriptReadmes };
+const blogPosts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/posts" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+  }),
+});
+
+export const collections = {
+  scripts,
+  scriptChangelogs,
+  scriptReadmes,
+  blogPosts,
+};

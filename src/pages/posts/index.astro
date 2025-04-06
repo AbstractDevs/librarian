@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blogPosts");
+---
+
+<Layout>
+  <div class="mt-8">
+    {
+      posts.map((post) => (
+        <div class="mt-4">
+          <a href={`/posts/${post.id}`}>{post.data.title}</a>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

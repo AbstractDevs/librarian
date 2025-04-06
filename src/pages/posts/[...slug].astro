@@ -1,0 +1,30 @@
+---
+import RenderedMarkdown from "@/components/astro/rendered-markdown.astro";
+import Layout from "@/layouts/Layout.astro";
+import { render, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blogPosts");
+
+  return posts.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<Layout containerClass="space-y-4">
+  <div>
+    <h1 class="text-3xl font-bold">{post.data.title}</h1>
+    <p class="text-sm text-gray-500">{post.data.pubDate.toLocaleDateString()}</p>
+  </div>
+  <RenderedMarkdown>
+    <Content />
+  </RenderedMarkdown>
+</Layout>
