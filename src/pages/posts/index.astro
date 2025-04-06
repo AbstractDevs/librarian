@@ -1,17 +1,32 @@
 ---
 import Layout from "@/layouts/page-layout.astro";
 import { getCollection } from "astro:content";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Typography from "@/components/astro/typography.astro";
 
 const posts = await getCollection("blogPosts");
 ---
 
-<Layout>
-  <div class="mt-8">
+<Layout containerClass="max-w-screen-md">
+  <div class="mt-12">
+    <Typography variant="h2">Blog Posts</Typography>
+  </div>
+  <div class="mt-8 flex flex-col gap-4">
     {
       posts.map((post) => (
-        <div class="mt-4">
-          <a href={`/posts/${post.id}`}>{post.data.title}</a>
-        </div>
+        <a href={`/posts/${post.id}`}>
+          <Card>
+            <CardHeader>
+              <CardTitle>{post.data.title}</CardTitle>
+              <CardDescription>{post.data.description}</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Typography>
+                Posted on {post.data.pubDate.toLocaleDateString()} by {post.data.author}
+              </Typography>
+            </CardFooter>
+          </Card>
+        </a>
       ))
     }
   </div>

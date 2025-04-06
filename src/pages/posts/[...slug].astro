@@ -1,7 +1,10 @@
 ---
 import RenderedMarkdown from "@/components/astro/rendered-markdown.astro";
+import Typography from "@/components/astro/typography.astro";
+import { ButtonLink } from "@/components/ui/button-link";
 import Layout from "@/layouts/page-layout.astro";
 import { render, getCollection } from "astro:content";
+import { ArrowLeftIcon } from "lucide-react";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blogPosts");
@@ -19,10 +22,18 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout containerClass="space-y-4">
+<Layout containerClass="max-w-screen-md space-y-4">
   <div>
-    <h1 class="text-3xl font-bold">{post.data.title}</h1>
-    <p class="text-sm text-gray-500">{post.data.pubDate.toLocaleDateString()}</p>
+    <ButtonLink variant="neutral" href="/posts">
+      <ArrowLeftIcon className="size-4" />
+      Back to Posts
+    </ButtonLink>
+  </div>
+  <div class="mt-12">
+    <Typography variant="h2">{post.data.title}</Typography>
+    <Typography variant="caption">
+      Posted on {post.data.pubDate.toLocaleDateString()} by {post.data.author}
+    </Typography>
   </div>
   <RenderedMarkdown>
     <Content />
