@@ -8,11 +8,7 @@ import {
 } from "@/components/ui/table";
 import type { CollectionEntry } from "astro:content";
 
-export const ScriptTable = ({
-  scripts,
-}: {
-  scripts: CollectionEntry<"scripts">[];
-}) => {
+export const ScriptTable = ({ scripts }: { scripts: CollectionEntry<"scripts">[] }) => {
   return (
     <Table>
       <TableHeader>

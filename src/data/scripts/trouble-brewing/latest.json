@@ -1,1 +1,25 @@
-[{"id":"_meta","author":"The Pandemonium Institute","name":"Trouble Brewing"},"chef","investigator","washerwoman","librarian","empath","fortuneteller","undertaker","monk","slayer","soldier","ravenkeeper","mayor","virgin","butler","drunk","recluse","saint","poisoner","spy","scarletwoman","baron","imp"]
+[
+  { "id": "_meta", "author": "The Pandemonium Institute", "name": "Trouble Brewing" },
+  "chef",
+  "investigator",
+  "washerwoman",
+  "librarian",
+  "empath",
+  "fortuneteller",
+  "undertaker",
+  "monk",
+  "slayer",
+  "soldier",
+  "ravenkeeper",
+  "mayor",
+  "virgin",
+  "butler",
+  "drunk",
+  "recluse",
+  "saint",
+  "poisoner",
+  "spy",
+  "scarletwoman",
+  "baron",
+  "imp"
+]

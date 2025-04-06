@@ -1,0 +1,81 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+import { match } from "ts-pattern";
+
+export const typographyVariants = cva("", {
+  variants: {
+    variant: {
+      h1: "text-4xl lg:text-5xl font-bold tracking-tight",
+      h2: "text-3xl font-semibold tracking-tight",
+      h3: "text-2xl font-semibold",
+      h4: "text-xl font-semibold",
+      h5: "text-lg font-semibold",
+      h6: "text-base font-semibold",
+      body: "text-base leading-relaxed",
+      "body-sm": "text-sm leading-relaxed",
+      "body-lg": "text-lg leading-relaxed",
+      label: "text-sm font-medium",
+      "label-sm": "text-xs font-medium",
+      "label-lg": "text-base font-medium",
+      caption: "text-sm text-muted-foreground",
+      "caption-sm": "text-xs text-muted-foreground",
+      "caption-lg": "text-base text-muted-foreground",
+    },
+  },
+  defaultVariants: {
+    variant: "body",
+  },
+});
+
+type TypographyVariants = VariantProps<typeof typographyVariants>;
+type Variant = NonNullable<TypographyVariants["variant"]>;
+
+export interface Props
+  extends TypographyVariants,
+    HTMLAttributes<"p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"> {
+  variant?: Variant;
+}
+
+const { variant, class: className, ...rest } = Astro.props;
+---
+
+{
+  match(variant)
+    .with("h1", () => (
+      <h1 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h1>
+    ))
+    .with("h2", () => (
+      <h2 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h2>
+    ))
+    .with("h3", () => (
+      <h3 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h3>
+    ))
+    .with("h4", () => (
+      <h4 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h4>
+    ))
+    .with("h5", () => (
+      <h5 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h5>
+    ))
+    .with("h6", () => (
+      <h6 {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </h6>
+    ))
+    .otherwise(() => (
+      <p {...rest} class={cn(typographyVariants({ variant, class: className }))}>
+        <slot />
+      </p>
+    ))
+}
