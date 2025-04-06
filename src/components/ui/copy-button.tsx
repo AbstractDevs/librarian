@@ -5,6 +5,7 @@ interface CopyButtonProps extends ButtonProps {
   content: string;
   successMessage?: string;
   successDescription?: string;
+  onSuccess?: () => void;
 }
 
 export const CopyButton = ({
@@ -12,6 +13,7 @@ export const CopyButton = ({
   children,
   successMessage,
   successDescription,
+  onSuccess,
   ...props
 }: CopyButtonProps) => {
   return (
@@ -22,10 +24,8 @@ export const CopyButton = ({
         navigator.clipboard
           .writeText(content)
           .then(() => {
-            if (successMessage) {
-              toast.success(successMessage, {
-                description: successDescription,
-              });
+            if (onSuccess) {
+              onSuccess();
             }
           })
           .catch(() => {

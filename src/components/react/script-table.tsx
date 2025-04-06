@@ -6,12 +6,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 import type { Script } from "@/utils/script";
-import { ClipboardCopyIcon, DownloadIcon } from "lucide-react";
-import { DownloadButton } from "../ui/download-button";
-import { CopyButton } from "../ui/copy-button";
+import { CopyScriptJsonButton } from "./copy-script-json-button";
+import { DownloadScriptJsonButton } from "./download-script-json-button";
 
 export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
   return (
@@ -38,43 +36,8 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
               {characterBreakdown.minionCount} / {characterBreakdown.demonCount}
             </TableCell>
             <TableCell className="flex items-center gap-2">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <CopyButton
-                      content={scriptJsonString}
-                      successMessage="JSON copied to clipboard"
-                      successDescription="You can paste it into botc.app to play"
-                      size="icon"
-                      variant="outline"
-                    >
-                      <ClipboardCopyIcon />
-                      <span className="sr-only">Copy Script JSON</span>
-                    </CopyButton>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Copy JSON</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <DownloadButton
-                      content={scriptJsonString}
-                      fileName={`${id.replaceAll("/", "-")}.json`}
-                      size="icon"
-                    >
-                      <DownloadIcon />
-                      <span className="sr-only">Download Script JSON</span>
-                    </DownloadButton>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Download JSON</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <CopyScriptJsonButton jsonString={scriptJsonString} size="icon" />
+              <DownloadScriptJsonButton jsonString={scriptJsonString} scriptId={id} size="icon" />
             </TableCell>
           </TableRow>
         ))}
