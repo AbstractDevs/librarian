@@ -1,5 +1,12 @@
 ---
 import "@/styles/index.css";
+import { cn } from "@/utils/cn";
+
+export type Props = {
+  containerClass?: string;
+};
+
+const { containerClass } = Astro.props;
 ---
 
 <!doctype html>
@@ -11,7 +18,11 @@ import "@/styles/index.css";
     <meta name="generator" content={Astro.generator} />
     <title>Librarian</title>
   </head>
-  <body>
-    <div class="container m-auto"><slot /></div>
+  <body class="overflow-hidden">
+    <div class="flex h-[100dvh] flex-col overflow-auto">
+      <div class={cn("container mx-auto flex-1", containerClass)}>
+        <slot />
+      </div>
+    </div>
   </body>
 </html>

@@ -1,24 +1,20 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { ScriptTable } from "@/components/react/script-table";
+import Heading from "@/components/astro/heading.astro";
 
-const scripts = await getCollection(
-  "scripts",
-  ({ id }) => !id.includes("/history/"),
-);
+const scripts = (
+  await getCollection("scripts", ({ id }) => !id.includes("/history/"))
+).sort((a, b) => a.data[0].name.localeCompare(b.data[0].name));
 ---
 
-<Layout>
-  <div class="container mx-auto">
-    <h1>Scripts</h1>
-    <ul>
-      {
-        scripts.map((script) => (
-          <a href={`/scripts/${script.id}`}>
-            <li>{script.id}</li>
-          </a>
-        ))
-      }
-    </ul>
+<Layout containerClass="mt-12 space-y-4">
+  <div class="flex justify-center">
+    <div class="space-y-1.5">
+      <Heading variant="h1" class="text-center">Scripts</Heading>
+      <p class="text-center text-sm">AbstractDevs</p>
+    </div>
   </div>
+  <ScriptTable client:load scripts={scripts} />
 </Layout>
