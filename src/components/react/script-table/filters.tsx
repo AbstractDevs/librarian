@@ -48,12 +48,7 @@ export const Filters = ({
   return (
     <div className="flex w-full flex-col items-center gap-2 md:flex-row">
       <div className="relative flex w-full flex-1 items-center md:w-auto">
-        <SearchIcon
-          className={cn(
-            "absolute left-3 h-4 w-4 shrink-0 opacity-50",
-            globalFilter.filterText !== "" && "hidden",
-          )}
-        />
+        <SearchIcon className="absolute left-3 size-4 shrink-0 opacity-50" />
         <Input
           type="text"
           onChange={(event) =>
@@ -63,7 +58,7 @@ export const Filters = ({
             })
           }
           placeholder="Search by name, author"
-          className="placeholder:pl-5"
+          className="pl-8"
         />
       </div>
       <div className="flex w-full items-center gap-1.5 md:w-auto">
