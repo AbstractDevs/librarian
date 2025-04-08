@@ -13,12 +13,13 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getSortedRowModel,
   useReactTable,
+  type SortingState,
 } from "@tanstack/react-table";
 import { columns } from "./columns";
 import { Typography } from "../typography";
 import { Filters, type TableFilter } from "./filters";
-import type { CharacterName } from "@/data/characters/registry";
 
 export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
   const [globalFilter, setGlobalFilter] = useState<TableFilter>({
@@ -26,14 +27,19 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
     filterText: "",
   });
 
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const table = useReactTable({
     data: scripts,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     onGlobalFilterChange: setGlobalFilter,
+    onSortingChange: setSorting,
     state: {
       globalFilter,
+      sorting,
     },
     // This is kinda hacky, but it works.
     globalFilterFn: (row, _, { filterText, selectedCharacters }: TableFilter) => {

@@ -1,17 +1,40 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import type { Script } from "@/types/script";
-import type { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef, HeaderContext } from "@tanstack/react-table";
 import { CopyScriptJsonButton } from "../copy-script-json-button";
 import { DownloadScriptJsonButton } from "../download-script-json-button";
+import { Button } from "@/components/ui/button";
+import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
+import { match } from "ts-pattern";
+
+const SortButton = ({
+  column,
+  label,
+}: HeaderContext<Script, unknown> & {
+  label: string;
+}) => {
+  return (
+    <Button variant="neutralNoShadow" onClick={column.getToggleSortingHandler()}>
+      {label}
+      {match(column.getIsSorted())
+        .with("asc", () => <ArrowUp className="ml-2 h-4 w-4" />)
+        .with("desc", () => <ArrowDown className="ml-2 h-4 w-4" />)
+        .with(false, () => <ArrowUpDown className="ml-2 h-4 w-4" />)
+        .exhaustive()}
+    </Button>
+  );
+};
 
 export const columns: ColumnDef<Script>[] = [
   {
     accessorKey: "name",
-    header: "Script",
+    sortingFn: "alphanumeric",
+    header: (ctx) => <SortButton label="Script" {...ctx} />,
   },
   {
     accessorKey: "author",
-    header: "Author",
+    sortingFn: "alphanumeric",
+    header: (ctx) => <SortButton label="Author" {...ctx} />,
   },
   {
     header: "Characters",
