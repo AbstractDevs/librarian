@@ -18,6 +18,7 @@ import {
 import { columns } from "./columns";
 import { Typography } from "../typography";
 import { Filters, type TableFilter } from "./filters";
+import type { CharacterName } from "@/data/characters/registry";
 
 export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
   const [globalFilter, setGlobalFilter] = useState<TableFilter>({
@@ -46,7 +47,11 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
 
       const matchesCharacters =
         selectedCharacters.length === 0 ||
-        selectedCharacters.every((character) => row.original.characters.includes(character));
+        selectedCharacters.every((character) =>
+          row.original.characters.some((c) => {
+            return typeof c === "string" ? c === character : c.name === character;
+          }),
+        );
 
       return (matchesName || matchesAuthor) && matchesCharacters;
     },
