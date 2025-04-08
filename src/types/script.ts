@@ -12,5 +12,5 @@ export type Script = {
     demonCount: number;
   };
   scriptJsonString: string;
-  characters: CharacterName[] | HomebrewCharacter[];
+  characters: CharacterName[] | HomebrewCharacter[]; // TODO: We can consolidate this more
 };
