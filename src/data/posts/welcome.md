@@ -1,22 +1,35 @@
-# Librarian
+---
+title: "Welcome to Librarian"
+author: "Matt"
+description: "An overview of the project and how to contribute"
+pubDate: "Apr 7 2025"
+---
 
-## Local Development
+This post will give an overview of the Librarian project, its goals, and where we see it going from here.
 
-1. Install [Bun](https://bun.sh/)
-2. Run `bun install`
-3. Run `bun dev`
+## What is Librarian?
 
-Format with Prettier:
+This project is a collection of scripts for the game [Blood on the Clocktower](https://bloodontheclocktower.com/), a game in which our Discord server, _Abstract Games_, has fallen in love with over the last year and change. While sinking ourselves deeper and deeper into the game, our group has had lots of fun creating and testing new and existing scripts for the game. Some have even gone above an beyond making their own "Homebrew" scripts outside of the base game
 
-```sh
-bun run format
-```
+As a group, it has been difficult to track the ever-changing scripts that have been created. Tracking down different versions to play and seeing the history of changes can often involve cross-referencing convoluted Discord threads or even DMs.
 
-Lint with ESLint:
+> Librarian is a collection of scripts, blog posts, and (eventually) statistics for the Abstract Games Blood on the Clocktower group
 
-```sh
-bun run lint
-```
+## What does it do?
+
+- [Browse all scripts](https://librarian.abstract-games.org/scripts/), filterable by name, author, and character(s)
+- Quickly copy/download any script for easy play on [botc.app](https://botc.app/)
+- View detailed overviews and changelogs of each script, written by the author
+- Browse script history to see changes over time
+- Read/write [blog posts](https://librarian.abstract-games.org/posts/) to share with the Abstract Games community
+
+## What might it do in the future?
+
+Some things on our minds for the future:
+
+- Detailed statistics about script building
+- Self service contribution directly through the site
+- Integrations with the Abstract Games Discord server
 
 ## Contributing
 
@@ -76,3 +89,7 @@ To add new scripts, please [open a pull request](https://github.com/AbstractDevs
 Librarian is an [open source](https://github.com/AbstractDevs/librarian) website built with Astro and React. We will happily consider any contributions for features and bug fixes
 
 For any feature requests or issue reports, please [open an issue](https://github.com/AbstractDevs/librarian/issues/new) on the GitHub repository
+
+## Conclusion
+
+That's all for now! More posts and scripts will be added in the future. Until then, see ya in town square!

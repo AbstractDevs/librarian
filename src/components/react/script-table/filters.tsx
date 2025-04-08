@@ -71,7 +71,7 @@ export const Filters = ({
                 : "Filter by Character"}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="p-0">
+          <PopoverContent side="bottom" avoidCollisions={false} className="p-0">
             <Command>
               <CommandInput placeholder="Search characters..." />
               <CommandList>
