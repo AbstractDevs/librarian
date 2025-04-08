@@ -6,7 +6,7 @@
 2. Run `bun install`
 3. Run `bun dev`
 
-Format with Prettier:
+Format code with Prettier:
 
 ```sh
 bun run format
