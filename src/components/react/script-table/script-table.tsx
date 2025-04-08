@@ -48,7 +48,9 @@ export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
       const matchesCharacters =
         selectedCharacters.length === 0 ||
         selectedCharacters.every((character) =>
-          (row.original.characters as CharacterName[]).includes(character),
+          row.original.characters.some((c) => {
+            return typeof c === "string" ? c === character : c.name === character;
+          }),
         );
 
       return (matchesName || matchesAuthor) && matchesCharacters;

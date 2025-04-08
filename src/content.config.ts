@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 
 import { glob } from "astro/loaders";
-import { homebrewCharacterSchema } from "./data/characters/homebrew";
+import { HomebrewCharacterSchema } from "./data/characters/homebrew";
 
 const scripts = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/data/scripts" }),
@@ -14,7 +14,7 @@ const scripts = defineCollection({
         almanac: z.string().url().optional(),
       }),
     ])
-    .rest(z.string().or(homebrewCharacterSchema)),
+    .rest(z.string().or(HomebrewCharacterSchema)),
 });
 
 const scriptChangelogs = defineCollection({

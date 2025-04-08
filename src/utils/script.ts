@@ -24,7 +24,7 @@ export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
 const standardCharacterBreakdown = (characters: string[]): Script["characterBreakdown"] => {
   return characters.reduce(
     (acc, character) => {
-      const parsedCharacter = CharacterNameSchema.parse(character as string);
+      const parsedCharacter = CharacterNameSchema.parse(character);
       const entry = characterRegistry[parsedCharacter];
 
       match(entry.type)

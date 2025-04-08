@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
 
-export const homebrewCharacterSchema = z.object({
+export const HomebrewCharacterSchema = z.object({
   id: z.string(),
   image: z.string().url().optional(),
   firstNightReminder: z.string().optional(),
@@ -14,4 +14,4 @@ export const homebrewCharacterSchema = z.object({
   otherNight: z.number().optional(),
 });
 
-export type HomebrewCharacter = z.infer<typeof homebrewCharacterSchema>;
+export type HomebrewCharacter = z.infer<typeof HomebrewCharacterSchema>;
