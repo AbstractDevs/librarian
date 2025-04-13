@@ -1,8 +1,17 @@
 import { z } from "astro/zod";
 
-export type CharacterType = "minion" | "demon" | "townsfolk" | "outsider" | "traveler" | "fabled";
+export const CharacterTypeSchema = z.enum([
+  "minion",
+  "demon",
+  "townsfolk",
+  "outsider",
+  "traveler",
+  "fabled",
+]);
 
-export type CharacterDetail = {
+export type CharacterType = z.infer<typeof CharacterTypeSchema>;
+
+type CharacterDetail = {
   type: CharacterType;
   displayName: string;
   description?: string;
