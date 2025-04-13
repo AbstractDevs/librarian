@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from "@/components/astro/theme-toggle.astro";
 import Typography from "@/components/astro/typography.astro";
 import { Toaster } from "@/components/ui/sonner";
 import "@/styles/index.css";
@@ -20,7 +21,10 @@ const { containerClass } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>Librarian</title>
   </head>
-  <body class="bg-secondary-background text-foreground overflow-hidden">
+  <body class="bg-secondary-background text-foreground relative overflow-hidden">
+    <div class="flex justify-end p-2">
+      <ThemeToggle />
+    </div>
     <div class="flex h-[100dvh] flex-col overflow-auto">
       <div
         class={cn(
