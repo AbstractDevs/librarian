@@ -1,20 +1,52 @@
 import { defineCollection, z } from "astro:content";
 
 import { glob } from "astro/loaders";
-import { HomebrewCharacterSchema } from "./data/characters/homebrew";
+import { CharacterTypeSchema } from "./data/characters/registry";
 
-const scripts = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/data/scripts" }),
-  schema: z
+// The `almanac` property is used to determine if a script is homebrew or not
+// Scripts using the official script tool have strings as character names
+// Bloodstar uses more complex objects for characters
+const ScriptDataSchema = z.union([
+  z
     .tuple([
       z.object({
         id: z.literal("_meta"),
         author: z.string(),
         name: z.string(),
-        almanac: z.string().url().optional(),
       }),
     ])
-    .rest(z.string().or(HomebrewCharacterSchema)),
+    .rest(z.string()),
+  z
+    .tuple([
+      z.object({
+        id: z.literal("_meta"),
+        author: z.string(),
+        name: z.string(),
+        almanac: z.string().url(),
+      }),
+    ])
+    .rest(
+      z.object({
+        id: z.string(),
+        name: z.string().optional(),
+        team: CharacterTypeSchema,
+
+        // Unused by librarian, but needed for copying script json
+        ability: z.string(),
+        image: z.string().url().optional(),
+        firstNightReminder: z.string().optional(),
+        otherNightReminder: z.string().optional(),
+        setup: z.boolean().optional(),
+        reminders: z.array(z.string()).optional(),
+        firstNight: z.number().optional(),
+        otherNight: z.number().optional(),
+      }),
+    ),
+]);
+
+const scripts = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/data/scripts" }),
+  schema: ScriptDataSchema,
 });
 
 const scriptChangelogs = defineCollection({

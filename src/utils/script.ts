@@ -1,83 +1,62 @@
 import { CharacterNameSchema, characterRegistry } from "@/data/characters/registry";
-import type { Script } from "@/types/script";
-import type { HomebrewCharacter } from "@/data/characters/homebrew";
+import { CharacterSchema, type Script } from "@/types/script";
 import type { CollectionEntry } from "astro:content";
 import { match } from "ts-pattern";
 
 export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
   const [meta, ...characters] = script.data;
 
+  const scriptType = "almanac" in meta ? "homebrew" : "official";
+
+  const characterBreakdown = {
+    demonCount: 0,
+    minionCount: 0,
+    outsiderCount: 0,
+    townsfolkCount: 0,
+  } as Script["characterBreakdown"];
+
+  const characterList = characters.map((character) => {
+    let parsedCharacter;
+    if (typeof character === "string") {
+      const parsedCharacterName = CharacterNameSchema.parse(character);
+      const entry = characterRegistry[parsedCharacterName];
+
+      parsedCharacter = CharacterSchema.parse({
+        scriptType,
+        name: parsedCharacterName,
+        team: entry.type,
+      });
+    } else {
+      parsedCharacter = CharacterSchema.parse({
+        scriptType,
+        ...character,
+      });
+    }
+
+    match(parsedCharacter.team)
+      .with("townsfolk", () => {
+        characterBreakdown.townsfolkCount++;
+      })
+      .with("outsider", () => {
+        characterBreakdown.outsiderCount++;
+      })
+      .with("minion", () => {
+        characterBreakdown.minionCount++;
+      })
+      .with("demon", () => {
+        characterBreakdown.demonCount++;
+      });
+
+    return parsedCharacter;
+  });
+
   return {
     id: script.id,
     name: meta.name,
     author: meta.author,
-    characterBreakdown: meta.almanac
-      ? homebrewCharacterBreakdown(characters as HomebrewCharacter[])
-      : standardCharacterBreakdown(characters as string[]),
-    characters: meta.almanac
-      ? (characters as HomebrewCharacter[])
-      : characters.map((character) => CharacterNameSchema.parse(character as string)),
+    type: scriptType,
+    characterBreakdown,
+    characters: characterList,
     scriptJsonString: JSON.stringify(script.data),
   };
-};
-
-const standardCharacterBreakdown = (characters: string[]): Script["characterBreakdown"] => {
-  return characters.reduce(
-    (acc, character) => {
-      const parsedCharacter = CharacterNameSchema.parse(character);
-      const entry = characterRegistry[parsedCharacter];
-
-      match(entry.type)
-        .with("townsfolk", () => {
-          acc.townsfolkCount++;
-        })
-        .with("outsider", () => {
-          acc.outsiderCount++;
-        })
-        .with("minion", () => {
-          acc.minionCount++;
-        })
-        .with("demon", () => {
-          acc.demonCount++;
-        });
-
-      return acc;
-    },
-    {
-      demonCount: 0,
-      minionCount: 0,
-      outsiderCount: 0,
-      townsfolkCount: 0,
-    } as Script["characterBreakdown"],
-  );
-};
-
-const homebrewCharacterBreakdown = (
-  characters: HomebrewCharacter[],
-): Script["characterBreakdown"] => {
-  return characters.reduce(
-    (acc, character) => {
-      match(character.team)
-        .with("townsfolk", () => {
-          acc.townsfolkCount++;
-        })
-        .with("outsider", () => {
-          acc.outsiderCount++;
-        })
-        .with("minion", () => {
-          acc.minionCount++;
-        })
-        .with("demon", () => {
-          acc.demonCount++;
-        });
-
-      return acc;
-    },
-    {
-      demonCount: 0,
-      minionCount: 0,
-      outsiderCount: 0,
-      townsfolkCount: 0,
-    } as Script["characterBreakdown"],
-  );
 };
