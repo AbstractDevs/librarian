@@ -6,6 +6,7 @@ import { DownloadScriptJsonButton } from "../download-script-json-button";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { match } from "ts-pattern";
+import { Badge } from "@/components/ui/badge";
 
 const SortButton = ({
   column,
@@ -30,6 +31,15 @@ export const columns: ColumnDef<Script>[] = [
     accessorKey: "name",
     sortingFn: "alphanumeric",
     header: (ctx) => <SortButton label="Script" {...ctx} />,
+    cell: ({ row }) => {
+      const script = row.original;
+      return (
+        <div className="flex items-center gap-2">
+          <span>{script.name}</span>
+          {script.type === "homebrew" && <Badge>Homebrew</Badge>}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "author",
