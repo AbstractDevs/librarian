@@ -1,3 +1,8 @@
+# Version 2.1
+
+- Removed Organ Grinder, added Fearmonger
+  - Another loud minion that helps the Acrobat's death be even more powerful for the good team
+
 # Version 2.0
 
 This is a major overhaul of the script, with the goal of making it more balanced. In play-testing, good was winning too many games too easily because of the lack of evil droison and lack of need to distrust their own info. This update removes most of the old minions, an re-works the outsiders
