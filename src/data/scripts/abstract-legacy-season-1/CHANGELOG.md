@@ -6,4 +6,3 @@
 2. Jens: [Spy](https://wiki.bloodontheclocktower.com/Spy) -> [Evil Twin](https://wiki.bloodontheclocktower.com/Evil_Twin)
 3. Ben: [Fortune Teller](https://wiki.bloodontheclocktower.com/Fortune_Teller) -> [Dreamer](https://wiki.bloodontheclocktower.com/Dreamer)
 4. Jed: [Investigator](https://wiki.bloodontheclocktower.com/Investigator) -> [Bounty Hunter](https://wiki.bloodontheclocktower.com/Bounty_Hunter)
-
