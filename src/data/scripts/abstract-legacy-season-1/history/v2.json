@@ -1,5 +1,9 @@
 [
-  { "id": "_meta", "author": "Abstract Games", "name": "Abstract Legacy v1.2" },
+  {
+    "id": "_meta",
+    "author": "Abstract Games",
+    "name": "Abstract Legacy v1.1"
+  },
   "chef",
   "washerwoman",
   "librarian",
@@ -8,18 +12,18 @@
   "dreamer",
   "undertaker",
   "monk",
+  "slayer",
   "soldier",
   "ravenkeeper",
   "mayor",
   "virgin",
-  "magician",
   "ogre",
   "drunk",
   "recluse",
   "saint",
   "poisoner",
-  "pithag",
   "eviltwin",
+  "scarletwoman",
   "baron",
   "imp"
 ]
