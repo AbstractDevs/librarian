@@ -1,0 +1,141 @@
+[
+  {
+    "id": "_meta",
+    "author": "Abstract Games",
+    "name": "Fishbuffet",
+    "bootlegger": [
+      "On the 1st night, all players choose a character (of their assigned character type) to become.",
+      "The Drunk and Lunatic cannot be chosen.",
+      "If there is more than 1 of the same character, 1 or more of the extras might be drunk.",
+      "No characters' setup abilities apply"
+    ]
+  },
+  {
+    "id": "choose_your_own_tf",
+    "name": "Choose a Townsfolk",
+    "team": "townsfolk",
+    "ability": "On the 1st night, choose a Townsfolk character to become.",
+    "special": [
+      {
+        "name": "bag-duplicate",
+        "type": "selection"
+      }
+    ],
+    "firstNight": 1,
+    "firstNightReminder": "The Townsfolk player chooses a character."
+  },
+  "artist",
+  "chambermaid",
+  "chef",
+  "clockmaker",
+  "courtier",
+  "dreamer",
+  "empath",
+  "exorcist",
+  "flowergirl",
+  "fool",
+  "fortuneteller",
+  "gambler",
+  "gossip",
+  "grandmother",
+  "innkeeper",
+  "investigator",
+  "juggler",
+  "librarian",
+  "mathematician",
+  "mayor",
+  "minstrel",
+  "monk",
+  "oracle",
+  "pacifist",
+  "philosopher",
+  "professor",
+  "ravenkeeper",
+  "sage",
+  "sailor",
+  "savant",
+  "seamstress",
+  "slayer",
+  "snakecharmer",
+  "soldier",
+  "tealady",
+  "towncrier",
+  "undertaker",
+  "virgin",
+  "washerwoman",
+  {
+    "id": "choose_your_own_out",
+    "name": "Choose an Outsider",
+    "team": "outsider",
+    "ability": "On the 1st night, choose an Outsider character to become.",
+    "special": [
+      {
+        "name": "bag-duplicate",
+        "type": "selection"
+      }
+    ],
+    "firstNight": 1,
+    "firstNightReminder": "The Outsider player chooses a character."
+  },
+  "barber",
+  "butler",
+  "drunk",
+  "goon",
+  "klutz",
+  "lunatic",
+  "moonchild",
+  "mutant",
+  "recluse",
+  "saint",
+  "sweetheart",
+  "tinker",
+  {
+    "id": "choose_your_own_min",
+    "name": "Choose a Minion",
+    "team": "minion",
+    "ability": "On the 1st night, choose a Minion character to become.",
+    "special": [
+      {
+        "name": "bag-duplicate",
+        "type": "selection"
+      }
+    ],
+    "firstNight": 1,
+    "firstNightReminder": "The Minion player chooses a character."
+  },
+  "assassin",
+  "baron",
+  "cerenovus",
+  "devilsadvocate",
+  "eviltwin",
+  "godfather",
+  "mastermind",
+  "poisoner",
+  "scarletwoman",
+  "spy",
+  "witch",
+  {
+    "id": "choose_your_own_dem",
+    "name": "Choose a Demon",
+    "team": "demon",
+    "ability": "On the 1st night, choose a Demon character to become.",
+    "special": [
+      {
+        "name": "bag-duplicate",
+        "type": "selection"
+      }
+    ],
+    "firstNight": 1,
+    "firstNightReminder": "The Demon player chooses a character."
+  },
+  "fanggu",
+  "imp",
+  "nodashii",
+  "po",
+  "pukka",
+  "shabaloth",
+  "vigormortis",
+  "vortox",
+  "zombuul",
+  "sentinel"
+]

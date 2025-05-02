@@ -22,13 +22,13 @@ export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
       const entry = characterRegistry[parsedCharacterName];
 
       parsedCharacter = CharacterSchema.parse({
-        scriptType,
+        scriptType: "official",
         name: parsedCharacterName,
         team: entry.type,
       });
     } else {
       parsedCharacter = CharacterSchema.parse({
-        scriptType,
+        scriptType: "homebrew",
         ...character,
       });
     }
