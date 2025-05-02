@@ -15,7 +15,31 @@ const ScriptDataSchema = z.union([
         name: z.string(),
       }),
     ])
-    .rest(z.string()),
+    .rest(
+      z.string().or(
+        // Whalebuffet/Fishbuffet choose your own character
+        // Slightly different than homebrew format from Bloodstar
+        z.object({
+          id: z.enum([
+            "choose_your_own_tf",
+            "choose_your_own_out",
+            "choose_your_own_min",
+            "choose_your_own_dem",
+          ]),
+          name: z.string(),
+          team: z.enum(["townsfolk", "outsider", "minion", "demon"]),
+          ability: z.string(),
+          special: z.array(
+            z.object({
+              name: z.literal("bag-duplicate"),
+              type: z.literal("selection"),
+            }),
+          ),
+          firstNight: z.literal(1),
+          firstNightReminder: z.string(),
+        }),
+      ),
+    ),
   z
     .tuple([
       z.object({
