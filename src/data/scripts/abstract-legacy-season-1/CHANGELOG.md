@@ -1,8 +1,11 @@
-# Changelog
+### 2024.04.29
 
-## Game 1 (2025.04.21) - Evil Win
+- Removing accidental inclusion of Investigator
+- Fixing some typos in the README.
+- Updating the CHANGELOG format.
+- (Version 3) Adding results from the 2025.04.29 game.
 
-1. Vaylana: [Butler](https://wiki.bloodontheclocktower.com/Butler) -> [Ogre](https://wiki.bloodontheclocktower.com/Ogre)
-2. Jens: [Spy](https://wiki.bloodontheclocktower.com/Spy) -> [Evil Twin](https://wiki.bloodontheclocktower.com/Evil_Twin)
-3. Ben: [Fortune Teller](https://wiki.bloodontheclocktower.com/Fortune_Teller) -> [Dreamer](https://wiki.bloodontheclocktower.com/Dreamer)
-4. Jed: [Investigator](https://wiki.bloodontheclocktower.com/Investigator) -> [Bounty Hunter](https://wiki.bloodontheclocktower.com/Bounty_Hunter)
+### 2025.04.21
+
+- Initial release of the script.
+- (Version 2) Adding results from the 2025.04.21 game.
