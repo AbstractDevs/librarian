@@ -1,3 +1,7 @@
+### 2024.05.04
+
+- Adding results from 2024.05.04 game
+
 ### 2024.04.29
 
 - Removing accidental inclusion of Investigator
