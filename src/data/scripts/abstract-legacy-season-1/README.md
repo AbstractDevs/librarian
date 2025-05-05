@@ -25,3 +25,10 @@ Welcome to Season 1 of the Abstract Games legacy clocktower! The rules are gener
 
 1. Matt: [Slayer](https://wiki.bloodontheclocktower.com/Slayer) -> [Magician](https://wiki.bloodontheclocktower.com/Magician)
 2. Jens: [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) -> [Pit Hag](https://wiki.bloodontheclocktower.com/Pit-Hag)
+
+## Game 3 (2025.05.04) - Evil Win
+
+1. Kyle: [Virgin](https://wiki.bloodontheclocktower.com/Virgin) -> [Alsaahir](https://wiki.bloodontheclocktower.com/Alsaahir)
+2. Jeej: [Soldier](https://wiki.bloodontheclocktower.com/Soldier) -> [High Priestess](https://wiki.bloodontheclocktower.com/High_Priestess)
+3. Kylie [Ogre](https://wiki.bloodontheclocktower.com/Ogre) -> [Politician](https://wiki.bloodontheclocktower.com/Politician)
+4. Justin [Evil Twin](https://wiki.bloodontheclocktower.com/Evil_Twin) -> [Godfather](https://wiki.bloodontheclocktower.com/Godfather)
