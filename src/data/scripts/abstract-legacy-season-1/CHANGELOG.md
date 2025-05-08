@@ -1,3 +1,7 @@
+### 2024.05.08
+
+- Adding results from 2024.05.06 games
+
 ### 2024.05.04
 
 - Adding results from 2024.05.04 game
