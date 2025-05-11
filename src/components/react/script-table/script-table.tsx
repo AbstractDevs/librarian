@@ -7,7 +7,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import type { Script } from "@/types/script";
 import { useState } from "react";
 import {
   flexRender,
@@ -17,11 +16,11 @@ import {
   useReactTable,
   type SortingState,
 } from "@tanstack/react-table";
-import { columns } from "./columns";
+import { columns, type ScriptColumn } from "./columns";
 import { Typography } from "../typography";
 import { Filters, type TableFilter } from "./filters";
 
-export const ScriptTable = ({ scripts }: { scripts: Script[] }) => {
+export const ScriptTable = ({ scripts }: { scripts: ScriptColumn[] }) => {
   const [globalFilter, setGlobalFilter] = useState<TableFilter>({
     selectedCharacters: [],
     filterText: "",

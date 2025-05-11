@@ -1,6 +1,6 @@
 import { CharacterNameSchema, characterRegistry } from "@/data/characters/registry";
 import { CharacterSchema, type Script } from "@/types/script";
-import type { CollectionEntry } from "astro:content";
+import { getEntry, type CollectionEntry } from "astro:content";
 import { match } from "ts-pattern";
 
 export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
@@ -59,4 +59,41 @@ export const parseScriptData = (script: CollectionEntry<"scripts">): Script => {
     characters: characterList,
     scriptJsonString: JSON.stringify(script.data),
   };
+};
+
+export const getScriptReadme = async (scriptId: string) => {
+  const [base] = scriptId.split("/");
+
+  // TODO: likely a much better way to do this linkage
+  const readme = await getEntry("scriptReadmes", `${base}/readme`);
+
+  if (!readme) {
+    throw new Error(`Script ${scriptId} must contain a README`);
+  }
+
+  return readme;
+};
+
+export const getScriptChangelog = async (scriptId: string) => {
+  const [base] = scriptId.split("/");
+
+  const changelog = await getEntry("scriptChangelogs", `${base}/changelog`);
+
+  return changelog;
+};
+
+export const getScriptHistory = ({
+  allScripts,
+  scriptId,
+}: {
+  allScripts: CollectionEntry<"scripts">[];
+  scriptId: string;
+}) => {
+  const [base] = scriptId.split("/");
+
+  // TODO: likely a much better way to do this?
+  return allScripts
+    .filter(({ id }) => id.startsWith(base) && id.includes("/history/"))
+    .sort((a, b) => b.id.localeCompare(a.id))
+    .map((script) => parseScriptData(script));
 };

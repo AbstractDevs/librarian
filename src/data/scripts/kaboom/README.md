@@ -1,6 +1,7 @@
 ---
 frontImage: ./kaboom-1.png
 backImage: ./kaboom-2.png
+createdAt: 2025-04-08
 ---
 
 # Kaboom

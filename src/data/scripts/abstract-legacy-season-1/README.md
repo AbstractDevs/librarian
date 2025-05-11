@@ -1,6 +1,8 @@
 ---
 frontImage: ./legacy-season-1-1.png
 backImage: ./legacy-season-1-2.png
+createdAt: 2025-04-21
+updatedAt: 2025-05-08
 ---
 
 # Abstract Games Legacy Clocktower Season 1

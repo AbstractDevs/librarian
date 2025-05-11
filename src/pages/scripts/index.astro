@@ -2,11 +2,24 @@
 import Layout from "@/layouts/page-layout.astro";
 import { getCollection } from "astro:content";
 import { ScriptTable } from "@/components/react/script-table";
-import { parseScriptData } from "@/utils/script";
+import { getScriptReadme, parseScriptData } from "@/utils/script";
 
-const scripts = (await getCollection("scripts", ({ id }) => !id.includes("/history/")))
-  .sort((a, b) => a.data[0].name.localeCompare(b.data[0].name))
-  .map((script) => parseScriptData(script));
+const sortedScripts = (await getCollection("scripts", ({ id }) => !id.includes("/history/"))).sort(
+  (a, b) => a.data[0].name.localeCompare(b.data[0].name),
+);
+
+const scripts = await Promise.all(
+  sortedScripts.map(async (script) => {
+    const parsedScript = parseScriptData(script);
+
+    const readme = await getScriptReadme(script.id);
+
+    return {
+      ...parsedScript,
+      readme: readme.data,
+    };
+  }),
+);
 ---
 
 <Layout>
