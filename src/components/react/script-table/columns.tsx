@@ -56,15 +56,27 @@ export const columns: ColumnDef<ScriptColumn>[] = [
     id: "created-at",
     header: (ctx) => <SortButton label="Added" {...ctx} />,
     sortingFn: "datetime",
-    accessorFn: (row) => (row.readme.createdAt ? format(row.readme.createdAt, "MM/dd/yyyy") : "-"),
+    sortUndefined: "last",
+    accessorFn: (row) => row.readme.createdAt,
     enableGlobalFilter: false,
+    cell: ({ row }) => {
+      const createdAt = row.original.readme.createdAt;
+
+      return <span>{createdAt ? format(createdAt, "MM/dd/yyyy") : "-"}</span>;
+    },
   },
   {
     id: "updated-at",
     header: (ctx) => <SortButton label="Last Updated" {...ctx} />,
     sortingFn: "datetime",
-    accessorFn: (row) => (row.readme.updatedAt ? format(row.readme.updatedAt, "MM/dd/yyyy") : "-"),
+    sortUndefined: "last",
+    accessorFn: (row) => row.readme.updatedAt,
     enableGlobalFilter: false,
+    cell: ({ row }) => {
+      const updatedAt = row.original.readme.updatedAt;
+
+      return <span>{updatedAt ? format(updatedAt, "MM/dd/yyyy") : "-"}</span>;
+    },
   },
   {
     header: "Characters",
