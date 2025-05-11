@@ -5,8 +5,13 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { ScriptImageActionButtons } from "@/components/react/script-image-action-buttons";
 import { ScriptImageTabs } from "@/components/react/script-image-tabs";
 import Layout from "@/layouts/page-layout.astro";
-import { parseScriptData } from "@/utils/script";
-import { render, getEntry, getCollection } from "astro:content";
+import {
+  getScriptChangelog,
+  getScriptHistory,
+  getScriptReadme,
+  parseScriptData,
+} from "@/utils/script";
+import { render, getCollection } from "astro:content";
 import { ArrowLeftIcon } from "lucide-react";
 import { DownloadScriptJsonButton } from "@/components/react/download-script-json-button";
 import { CopyScriptJsonButton } from "@/components/react/copy-script-json-button";
@@ -16,18 +21,14 @@ export async function getStaticPaths() {
 
   return Promise.all(
     scripts.map(async (script) => {
-      const [base] = script.id.split("/");
+      const history = getScriptHistory({
+        allScripts: scripts,
+        scriptId: script.id,
+      });
 
-      // TODO: likely a much better way to do this?
-      const history = scripts
-        .filter(({ id }) => id.startsWith(base) && id.includes("/history/"))
-        .sort((a, b) => b.id.localeCompare(a.id))
-        .map((script) => parseScriptData(script));
-
-      // TODO: likely a much better way to do this?
       const [changelog, readme] = await Promise.all([
-        getEntry("scriptChangelogs", `${base}/changelog`),
-        getEntry("scriptReadmes", `${base}/readme`),
+        getScriptChangelog(script.id),
+        getScriptReadme(script.id),
       ]);
 
       if (!readme) {

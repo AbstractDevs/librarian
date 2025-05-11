@@ -1,6 +1,7 @@
 ---
 frontImage: ./swamp-pies-1.png
 backImage: ./swamp-pies-2.png
+createdAt: 2025-04-08
 ---
 
 ## Description

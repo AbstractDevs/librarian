@@ -1,6 +1,7 @@
 ---
 frontImage: ./hidden-truths-1.png
 backImage: ./hidden-truths-2.png
+createdAt: 2025-04-07
 ---
 
 Hidden Truths is a script based on the fundamental idea that everything that happens can be explained in tons of ways. Did the Chef get a 4 because it's a Legion game, or is the Vortox causing incorrect information? Did the Acrobat choose a drunk player, or did an Assassin cause the extra kill at night? Is it an Atheist game, or is all the weird stuff happening because of a Widow pulling the strings?

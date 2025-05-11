@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import type { Script } from "@/types/script";
 import type { ColumnDef, HeaderContext } from "@tanstack/react-table";
@@ -7,11 +8,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { match } from "ts-pattern";
 import { Badge } from "@/components/ui/badge";
+import type { InferEntrySchema } from "astro:content";
+
+export type ScriptColumn = Script & {
+  readme: InferEntrySchema<"scriptReadmes">;
+};
 
 const SortButton = ({
   column,
   label,
-}: HeaderContext<Script, unknown> & {
+}: HeaderContext<ScriptColumn, unknown> & {
   label: string;
 }) => {
   return (
@@ -26,7 +32,7 @@ const SortButton = ({
   );
 };
 
-export const columns: ColumnDef<Script>[] = [
+export const columns: ColumnDef<ScriptColumn>[] = [
   {
     accessorKey: "name",
     sortingFn: "alphanumeric",
@@ -45,6 +51,20 @@ export const columns: ColumnDef<Script>[] = [
     accessorKey: "author",
     sortingFn: "alphanumeric",
     header: (ctx) => <SortButton label="Author" {...ctx} />,
+  },
+  {
+    id: "created-at",
+    header: (ctx) => <SortButton label="Added" {...ctx} />,
+    sortingFn: "datetime",
+    accessorFn: (row) => (row.readme.createdAt ? format(row.readme.createdAt, "MM/dd/yyyy") : "-"),
+    enableGlobalFilter: false,
+  },
+  {
+    id: "updated-at",
+    header: (ctx) => <SortButton label="Last Updated" {...ctx} />,
+    sortingFn: "datetime",
+    accessorFn: (row) => (row.readme.updatedAt ? format(row.readme.updatedAt, "MM/dd/yyyy") : "-"),
+    enableGlobalFilter: false,
   },
   {
     header: "Characters",

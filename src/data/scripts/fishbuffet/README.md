@@ -1,6 +1,7 @@
 ---
 frontImage: ./fish.png
 backImage: ./fish.png
+createdAt: 2025-05-02
 ---
 
 A concept where each player chooses which character they are out of **all

@@ -83,6 +83,8 @@ const scriptReadmes = defineCollection({
     z.object({
       frontImage: image().optional(),
       backImage: image().optional(),
+      createdAt: z.coerce.date().optional(),
+      updatedAt: z.coerce.date().optional(),
     }),
 });
 

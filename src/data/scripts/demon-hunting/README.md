@@ -1,6 +1,7 @@
 ---
 frontImage: Demon-Hunting-1.png
 backImage: Demon-Hunting-2.png
+createdAt: 2025-04-08
 ---
 
 # Demon Hunting
