@@ -1,14 +1,14 @@
 [
-  { "id": "_meta", "author": "Abstract Games", "name": "Abstract Legacy v1.6" },
+  { "id": "_meta", "author": "Abstract Games", "name": "Abstract Legacy v1.5" },
   "washerwoman",
   "pixie",
   "bountyhunter",
   "empath",
-  "balloonist",
+  "highpriestess",
   "king",
   "dreamer",
   "undertaker",
-  "juggler",
+  "ravenkeeper",
   "choirboy",
   "mayor",
   "magician",
@@ -19,9 +19,8 @@
   "politician",
   "poisoner",
   "pithag",
+  "xaan",
   "marionette",
-  "mastermind",
-  "yaggababble",
   "vortox",
-  "lordoftyphon"
+  "alhadikhia"
 ]

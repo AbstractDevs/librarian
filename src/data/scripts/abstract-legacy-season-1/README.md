@@ -2,7 +2,7 @@
 frontImage: ./legacy-season-1-1.png
 backImage: ./legacy-season-1-2.png
 createdAt: 2025-04-21
-updatedAt: 2025-05-08
+updatedAt: 2025-05-12
 ---
 
 # Abstract Games Legacy Clocktower Season 1
@@ -48,3 +48,10 @@ Welcome to Season 1 of the Abstract Games legacy clocktower! The rules are gener
 1. Jens: [Librarian](https://wiki.bloodontheclocktower.com/Librarian) -> [King](https://wiki.bloodontheclocktower.com/King)
 2. Reagan: [Chef](https://wiki.bloodontheclocktower.com/Chef) -> [Poppy Grower](https://wiki.bloodontheclocktower.com/Poppy_Grower)
 3. Nate: [Monk](https://wiki.bloodontheclocktower.com/Monk) -> [Choirboy](https://wiki.bloodontheclocktower.com/Choirboy)
+
+## Game 6 (2025.05.11) - Good Win
+
+1. Greg: [High Priestess](https://wiki.bloodontheclocktower.com/High_Priestess) -> [Juggler](https://wiki.bloodontheclocktower.com/Juggler)
+2. Reagan: [Ravenkeeper](https://wiki.bloodontheclocktower.com/Ravenkeeper) -> [Balloonist](https://wiki.bloodontheclocktower.com/Balloonist)
+3. Jens: [Xaan](https://wiki.bloodontheclocktower.com/Xaan) -> [Mastermind](https://wiki.bloodontheclocktower.com/Mastermind)
+4. Kyle: [Al-Hadikhia](https://wiki.bloodontheclocktower.com/Al-Hadikhia) -> [Lord of Typhon](https://wiki.bloodontheclocktower.com/Lord_of_Typhon) and [Yagababble](https://wiki.bloodontheclocktower.com/Yagababble)
