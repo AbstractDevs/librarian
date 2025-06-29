@@ -1,25 +1,25 @@
 [
-    {
-        "id": "_meta",
-        "author": "Josh",
-        "name": "This Little Maneuver"
-    },
-    "knight",
-    "grandmother",
-    "balloonist",
-    "monk",
-    "alsaahir",
-    "seamstress",
-    "artist",
-    "cannibal",
-    "tealady",
-    "lunatic",
-    "drunk",
-    "golem",
-    "summoner",
-    "mastermind",
-    "boffin",
-    "kazali",
-    "vortox",
-    "lleech"
+  {
+    "id": "_meta",
+    "author": "Josh",
+    "name": "This Little Maneuver"
+  },
+  "knight",
+  "grandmother",
+  "balloonist",
+  "monk",
+  "alsaahir",
+  "seamstress",
+  "artist",
+  "cannibal",
+  "tealady",
+  "lunatic",
+  "drunk",
+  "golem",
+  "summoner",
+  "mastermind",
+  "boffin",
+  "kazali",
+  "vortox",
+  "lleech"
 ]
