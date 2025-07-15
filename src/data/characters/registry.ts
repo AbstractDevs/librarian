@@ -72,6 +72,7 @@ const allBaseCharacters = [
   "pixie",
   "poppygrower",
   "preacher",
+  "princess",
   "professor",
   "ravenkeeper",
   "sage",
@@ -99,6 +100,7 @@ const allBaseCharacters = [
   "goon",
   "hatter",
   "heretic",
+  "hermit",
   "klutz",
   "lunatic",
   "moonchild",
@@ -140,6 +142,7 @@ const allBaseCharacters = [
   "widow",
   "witch",
   "wizard",
+  "wraith",
   "xaan",
 
   // Demons
@@ -257,6 +260,7 @@ export const characterRegistry = {
   pixie: { type: "townsfolk", displayName: "Pixie" },
   poppygrower: { type: "townsfolk", displayName: "Poppy Grower" },
   preacher: { type: "townsfolk", displayName: "Preacher" },
+  princess: { type: "townsfolk", displayName: "Princess" },
   professor: { type: "townsfolk", displayName: "Professor" },
   ravenkeeper: { type: "townsfolk", displayName: "Ravenkeeper" },
   sage: { type: "townsfolk", displayName: "Sage" },
@@ -283,6 +287,7 @@ export const characterRegistry = {
   goon: { type: "outsider", displayName: "Goon" },
   hatter: { type: "outsider", displayName: "Hatter" },
   heretic: { type: "outsider", displayName: "Heretic" },
+  hermit: { type: "outsider", displayName: "Hermit" },
   klutz: { type: "outsider", displayName: "Klutz" },
   lunatic: { type: "outsider", displayName: "Lunatic" },
   moonchild: { type: "outsider", displayName: "Moonchild" },
@@ -323,6 +328,7 @@ export const characterRegistry = {
   widow: { type: "minion", displayName: "Widow" },
   witch: { type: "minion", displayName: "Witch" },
   wizard: { type: "minion", displayName: "Wizard" },
+  wraith: { type: "minion", displayName: "Wraith" },
   xaan: { type: "minion", displayName: "Xaan" },
 
   alhadikhia: { type: "demon", displayName: "Al-Hadikhia" },
