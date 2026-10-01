@@ -1,15 +1,11 @@
 [
-  {
-    "id": "_meta",
-    "name": "Banana Peel Protocol",
-    "author": "Josh"
-  },
+  { "id": "_meta", "author": "Josh", "name": "Banana Peel Protocol" },
   "investigator",
   "librarian",
   "shugenja",
   "empath",
   "dreamer",
-  "towncrier",
+  "flowergirl",
   "gossip",
   "savant",
   "seamstress",
