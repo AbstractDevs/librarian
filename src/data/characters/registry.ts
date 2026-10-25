@@ -202,6 +202,7 @@ const allBaseCharacters = [
   "ferryman",
   "gardener",
   "stormcatcher",
+  "knaves",
 ] as const;
 
 export const CharacterNameSchema = z.enum(allBaseCharacters);
@@ -385,4 +386,5 @@ export const characterRegistry = {
   ferryman: { type: "fabled", displayName: "Ferryman" },
   gardener: { type: "fabled", displayName: "Gardener" },
   stormcatcher: { type: "fabled", displayName: "Storm Catcher" },
+  knaves: { type: "fabled", displayName: "Knaves" },
 } as const satisfies Record<CharacterName, CharacterDetail>;
